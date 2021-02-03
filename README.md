@@ -45,9 +45,10 @@ Technical details available in this [issue](https://github.com/jump-dev/JuMP.jl/
 - Add tests, documentation, and features for vector-valued objective problems to MathOptInterface.
   - Here was the start of a previous attempt: https://github.com/jump-dev/MathOptInterface.jl/pull/968.
   - Also a reader for the MOP file format: https://github.com/odow/MathOptFormat.jl/pull/95
-- Revive this solver: https://github.com/odow/MOO.jl. 
+- Revive this solver for proof-of-concept: https://github.com/odow/MOO.jl. 
   - Add more tests, documentation, and features.
   - Add other multi-objective algorithms
 
 **Stretch goal**
 - Extend JuMP's `@objective` macro to work with vector-valued functions.
+- Add support for (vOptSolver](https://github.com/vOptSolver/vOptGeneric.jl)

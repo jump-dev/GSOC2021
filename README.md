@@ -51,4 +51,4 @@ Technical details available in this [issue](https://github.com/jump-dev/JuMP.jl/
 
 **Stretch goal**
 - Extend JuMP's `@objective` macro to work with vector-valued functions.
-- Add support for (vOptSolver](https://github.com/vOptSolver/vOptGeneric.jl)
+- Add support for [vOptSolver](https://github.com/vOptSolver/vOptGeneric.jl)

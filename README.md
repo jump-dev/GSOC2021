@@ -22,9 +22,9 @@ they are limited to problems with a single scalar objective function. The goal
 of this project is to relax this requirement so that users can model and solve 
 multi-objective optimization problems.
 
-| **Intensity**                          | **Priority**              | **Involves**  | **Mentors**              |
-| -------------                          | ------------              | ------------- | -----------              |
-| Moderate  |  Medium  | Adding support for vector-valued objective functions to MOI and JuMP | [Oscar Dowson](https://github.com/odow) |
+| **Priority** | **Involves**  | **Mentors** |
+| ------------ | ------------- | ----------- |
+|  Medium  | Adding support for vector-valued objective functions to MOI and JuMP | [Oscar Dowson](https://github.com/odow) |
 
 #### Technical Details
 

@@ -8,6 +8,9 @@ JuMP is a modeling interface and a collection of supporting packages for mathema
 ## Mentors
 
 - [Oscar Dowson](https://github.com/odow)
+- [Joaquim Dias Garcia](https://github.com/joaquimg)
+- [Mathieu Besançon](https://github.com/matbesancon)
+- [Benoît Legat](https://github.com/blegat)
 
 ## Ideas
 
@@ -22,8 +25,8 @@ they are limited to problems with a single scalar objective function. The goal
 of this project is to relax this requirement so that users can model and solve 
 multi-objective optimization problems.
 
-| **Priority** | **Involves**  | **Mentors** |
-| ------------ | ------------- | ----------- |
+| **Priority** | **Involves** | **Mentors** |
+| ------------ | ------------ | ----------- |
 |  Medium  | Adding support for vector-valued objective functions to MOI and JuMP | [Oscar Dowson](https://github.com/odow) |
 
 #### Technical Details
@@ -52,3 +55,56 @@ Technical details available in this [issue](https://github.com/jump-dev/JuMP.jl/
 **Stretch goal**
 - Extend JuMP's `@objective` macro to work with vector-valued functions.
 - Add support for [vOptSolver](https://github.com/vOptSolver/vOptGeneric.jl)
+
+### Matrix-based representation of optimization problems
+
+| **Priority** | **Involves** | **Mentors** |
+| ------------ | ------------ | ----------- |
+|  Medium  | Implementation of problem matrix representations and integration in solvers | [Joaquim Dias Garcia](https://github.com/joaquimg),  [Mathieu Besançon](https://github.com/matbesancon), [Benoît Legat](https://github.com/blegat)|
+
+#### Abstract
+
+Many classes of optimization problems are commonly represented using matrices of parameters:
+
+```
+l ≤ A x ≤ u
+```
+
+These representations can be what optimization solvers require as input or used to transform
+optimization problems, for example to derive its dual problem or its KKT conditions.
+We want to develop [MatrixOptInterface.jl](https://github.com/jump-dev/MatrixOptInterface.jl/)
+to federate efforts to build various representations of optimization problems in matrix form.
+
+#### Technical details
+
+The core of the project will the implementation of matrix representations for optimization problems.
+These representations can then be used to simplify the code in solver wrappers transforming a
+MathOptInterface model into structures that are passed to the native solver.  
+
+Beyond the implementation of the various matrix forms, this project will lead possibilities to
+work on various connected packages such as solver wrappers,
+[Dualization.jl](https://github.com/jump-dev/Dualization.jl),
+[DiffOpt.jl](https://github.com/jump-dev/DiffOpt.jl), or
+[ParametricOptInterface.jl](https://github.com/jump-dev/ParametricOptInterface.jl).
+
+#### Helpful Experience
+
+- Knowledge of mathematical optimization (linear, quadratic optimization, duality)
+- Basic knowledge of MathOptInterface
+
+#### Steps
+
+**Initial steps**
+
+- Read the MathOptInterface manual and get familiar with the data structures used to represent scalar and vector functions
+- Read on the models already implemented in [matrix form](https://github.com/jump-dev/MatrixOptInterface.jl/)
+
+**Key deliverables**
+
+- Implement various forms for linear, conic and quadratic optimization problems in MatrixOptInterface
+- Design user-oriented documentation for building and consuming the various problem formats
+- Replace the conversion code from MOI structures in solvers with the MatrixOptInterface implementation
+
+**Stretch goals**
+
+- Integrate MatrixOptInterface in ParametricOptInterface, Dualization.jl, DiffOpt.jl, BilevelJuMP.jl

@@ -58,6 +58,10 @@ Technical details available in this [issue](https://github.com/jump-dev/JuMP.jl/
 
 ### Matrix-based representation of optimization problems
 
+| **Intensity**                          | **Priority**              | **Involves**  | **Mentors**              |
+| -------------                          | ------------              | ------------- | -----------              |
+| Low  |  Medium  | Implementation of problem matrix representations and integration in solvers | [Joaquim Dias Garcia](https://github.com/joaquimg),  [Mathieu Besançon](https://github.com/matbesancon), [Benoît Legat](https://github.com/blegat)|
+
 #### Abstract
 
 Many classes of optimization problems are commonly represented using matrices of parameters:

@@ -20,9 +20,9 @@ _If you have an idea for GSOC2021, please make a pull request to edit this page.
 
 #### Abstract
 
-A key limitation of the current version of JuMP and MathOptInterface is that 
-they are limited to problems with a single scalar objective function. The goal 
-of this project is to relax this requirement so that users can model and solve 
+A key limitation of the current version of JuMP and MathOptInterface is that
+they are limited to problems with a single scalar objective function. The goal
+of this project is to relax this requirement so that users can model and solve
 multi-objective optimization problems.
 
 | **Priority** | **Involves** | **Mentors** |
@@ -48,7 +48,7 @@ Technical details available in this [issue](https://github.com/jump-dev/JuMP.jl/
 - Add tests, documentation, and features for vector-valued objective problems to MathOptInterface.
   - Here was the start of a previous attempt: https://github.com/jump-dev/MathOptInterface.jl/pull/968.
   - Also a reader for the MOP file format: https://github.com/odow/MathOptFormat.jl/pull/95
-- Revive this solver for proof-of-concept: https://github.com/odow/MOO.jl. 
+- Revive this solver for proof-of-concept: https://github.com/odow/MOO.jl.
   - Add more tests, documentation, and features.
   - Add other multi-objective algorithms
 
@@ -79,7 +79,7 @@ to federate efforts to build various representations of optimization problems in
 
 The core of the project will the implementation of matrix representations for optimization problems.
 These representations can then be used to simplify the code in solver wrappers transforming a
-MathOptInterface model into structures that are passed to the native solver.  
+MathOptInterface model into structures that are passed to the native solver.
 
 Beyond the implementation of the various matrix forms, this project will lead possibilities to
 work on various connected packages such as solver wrappers,
@@ -108,3 +108,55 @@ work on various connected packages such as solver wrappers,
 **Stretch goals**
 
 - Integrate MatrixOptInterface in ParametricOptInterface, Dualization.jl, DiffOpt.jl, BilevelJuMP.jl
+
+###  Chordal decomposition of SDP
+
+#### Abstract
+
+Chordal decomposition is a key step in the formulation of sparse SDP.
+Implementations are already available
+in [SumOfSquares](https://github.com/jump-dev/SumOfSquares.jl/)
+and [COSMO](https://github.com/oxfordcontrol/COSMO.jl).
+
+| **Priority** | **Involves** | **Mentors** |
+| ------------ | ------------ | ----------- |
+|  Medium  | Creating Chordal extension and decomposition packages | [Joaquim Dias Garcia](https://github.com/joaquimg), [Benoît Legat](https://github.com/blegat) |
+
+#### Abstract
+
+Many semidefinite problems are sparse and exploiting this sparsity can significantly
+reduce the computation time and memory needed to solve the problem.
+
+The goal of this project is to refactor existing implementation of chordal sparsity reduction into a MathOptInterface layer that is easy to plug into any SDP solver as a transformation layer.
+
+#### Technical details
+
+COSMO and SumOfSquares currently implement algorithms for chordal completion/extension.
+The core of this project is to create a package containg these algorithms for chordal graphs
+with test, documentation and benchmarks.
+Then, this package will be used to create another package implementing a MathOptInterface
+layer for chordal sparsity decomposition.
+
+#### Helpful Experience
+
+- Knowledge of mathematical optimization (semidefinite programming)
+- Knowledge of graph theory and chordal graphs (see *Chordal Graphs and Semidefinite Optimization* by Lieven Vandenberghe and Martin S. Andersen)
+- Basic knowledge of MathOptInterface
+
+#### Steps
+
+**Initial steps**
+
+- Read the MathOptInterface manual and get familiar with the data structures used to represent scalar and vector functions
+- Read the implementation of algorithms on chordal graphs
+in [SumOfSquares](https://github.com/jump-dev/SumOfSquares.jl/)
+and [COSMO](https://github.com/oxfordcontrol/COSMO.jl).
+
+**Key deliverables**
+
+- Create a Chordal.jl package with algorithms on chordal graphs
+- Create a ChordalOptInterface.jl package an MOI layer doing chordal sparsity decomposition
+
+**Stretch goals**
+
+- Allow chordal decomposition to be an easy to use option from JuMP that works with any semidefinite solver.
